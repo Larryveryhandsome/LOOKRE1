@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a16d7408f921f2e496b66f001e062c36 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; bottom: 50px; left: 50px; width: 220px; height: 130px; background-color: white; border:2px solid grey; z-index:9999; font-size:14px; padding: 10px">
+    <p><b>圖例說明</b></p>
+    <div style='display:flex;align-items:center;'><div style='background:#43a047; color:#fff; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:bold; margin-right:6px; border:2px solid #fff;'>起點</div> 起點</div>
+    <div style='display:flex;align-items:center;'><div style='background:#1976d2; color:#fff; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:bold; margin-right:6px; border:2px solid #fff;'>專任</div> 專任物件</div>
+    <div style='display:flex;align-items:center;'><div style='background:#d32f2f; color:#fff; border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:bold; margin-right:6px; border:2px solid #fff;'>一般</div> 一般物件</div>
+    <p style="color:blue">藍線：建議路線</p>
+    </div>
+    
+    
+            <div class="folium-map" id="map_a16d7408f921f2e496b66f001e062c36" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a16d7408f921f2e496b66f001e062c36 = L.map(
+                "map_a16d7408f921f2e496b66f001e062c36",
+                {
+                    center: [24.764166, 121.77544142857143],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0618bd60d1509eadcae3a1db01868246 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0618bd60d1509eadcae3a1db01868246.addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var marker_ceece365d997a9614e36dc48ed6d5668 = L.marker(
+                [24.749461, 121.763649],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_683bdd26eb869f462128c64fd65328c5 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\u0027display: flex; align-items: center; justify-content: center;\u0027\u003e\n                        \u003cdiv style=\u0027background:#43a047; color:#fff; border-radius:50%; width:54px; height:54px; display:flex; align-items:center; justify-content:center; border:4px solid #fff; font-size:22px; font-weight:bold; box-shadow:0 2px 8px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e\n                            \u8d77\u9ede\n                        \u003c/div\u003e\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_ed3df8a342cad3d8a00f249101ee358d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5bd13ba32372da914ac559a184c7574d = $(`<div id="html_5bd13ba32372da914ac559a184c7574d" style="width: 100.0%; height: 100.0%;">             <div style='width: 320px; font-family: Arial, sans-serif;'>                 <div style='background:#f5f5f5; padding:10px; border-radius:8px; margin-bottom:8px;'>                     <span style='font-size:18px; font-weight:bold; color:#d32f2f;'>起點. 校舍路12號</span><br/>                     <span style='font-size:16px; font-weight:bold;'>售價：<span style='color:#1976d2'>N/A</span> 萬元</span><br/>                     <span style='font-size:15px;'>建坪：<b>-</b>　地坪：<b>-</b></span>                 </div>                 <table style='width:100%; font-size:13px; border-collapse:collapse;'>                     <tr><td style='font-weight:bold;'>單價</td><td>- 萬元</td></tr>                     <tr><td style='font-weight:bold;'>格局</td><td>-</td></tr>                     <tr><td style='font-weight:bold;'>面寬/米</td><td>-</td></tr>                     <tr><td style='font-weight:bold;'>深度/米</td><td>-</td></tr>                     <tr><td style='font-weight:bold;'>現況</td><td>-</td></tr>                     <tr><td style='font-weight:bold;'>都市計畫</td><td>-</td></tr>                     <tr><td style='font-weight:bold;'>停駐路段</td><td>-</td></tr>                     <tr><td style='font-weight:bold;'>帶看方式</td><td>-</td></tr>                     <tr><td style='font-weight:bold;'>經紀人</td><td style='color:#1976d2; font-weight:bold;'>-</td></tr>                 </table>             </div>             </div>`)[0];
+                popup_ed3df8a342cad3d8a00f249101ee358d.setContent(html_5bd13ba32372da914ac559a184c7574d);
+            
+        
+
+        marker_ceece365d997a9614e36dc48ed6d5668.bindPopup(popup_ed3df8a342cad3d8a00f249101ee358d)
+        ;
+
+        
+    
+    
+                marker_ceece365d997a9614e36dc48ed6d5668.setIcon(div_icon_683bdd26eb869f462128c64fd65328c5);
+            
+    
+            var marker_c902e7874116005e3b3509f82136a83b = L.marker(
+                [24.749461, 121.763649],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_a42bfe53df6a6313e70c688a10223fc6 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\u0027display: flex; align-items: center; justify-content: center;\u0027\u003e\n                        \u003cdiv style=\u0027background:#d32f2f; color:#fff; border-radius:50%; width:54px; height:54px; display:flex; align-items:center; justify-content:center; border:4px solid #fff; font-size:22px; font-weight:bold; box-shadow:0 2px 8px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e\n                            \u4e00\u822c\n                        \u003c/div\u003e\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_4e166a6af6eff58ffc1e2724a21631fa = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_bc016cb38df95bf3d8ae41077e1213d9 = $(`<div id="html_bc016cb38df95bf3d8ae41077e1213d9" style="width: 100.0%; height: 100.0%;">             <div style='width: 320px; font-family: Arial, sans-serif;'>                 <div style='background:#f5f5f5; padding:10px; border-radius:8px; margin-bottom:8px;'>                     <span style='font-size:18px; font-weight:bold; color:#d32f2f;'>1. 宜蘭市校舍二路33號</span><br/>                     <span style='font-size:16px; font-weight:bold;'>售價：<span style='color:#1976d2'>818.0</span> 萬元</span><br/>                     <span style='font-size:15px;'>建坪：<b>18.26</b>　地坪：<b>5</b></span>                 </div>                 <table style='width:100%; font-size:13px; border-collapse:collapse;'>                     <tr><td style='font-weight:bold;'>單價</td><td>44 萬元</td></tr>                     <tr><td style='font-weight:bold;'>格局</td><td>彈格</td></tr>                     <tr><td style='font-weight:bold;'>面寬/米</td><td>5</td></tr>                     <tr><td style='font-weight:bold;'>深度/米</td><td>7</td></tr>                     <tr><td style='font-weight:bold;'>現況</td><td>空屋</td></tr>                     <tr><td style='font-weight:bold;'>都市計畫</td><td>內</td></tr>                     <tr><td style='font-weight:bold;'>停駐路段</td><td>黎明國小</td></tr>                     <tr><td style='font-weight:bold;'>帶看方式</td><td>直接</td></tr>                     <tr><td style='font-weight:bold;'>經紀人</td><td style='color:#1976d2; font-weight:bold;'>珍珍/緁締</td></tr>                 </table>             </div>             </div>`)[0];
+                popup_4e166a6af6eff58ffc1e2724a21631fa.setContent(html_bc016cb38df95bf3d8ae41077e1213d9);
+            
+        
+
+        marker_c902e7874116005e3b3509f82136a83b.bindPopup(popup_4e166a6af6eff58ffc1e2724a21631fa)
+        ;
+
+        
+    
+    
+                marker_c902e7874116005e3b3509f82136a83b.setIcon(div_icon_a42bfe53df6a6313e70c688a10223fc6);
+            
+    
+            var marker_18f79038a93424d1983ddfb6d09c220e = L.marker(
+                [24.748461, 121.763649],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_290244ab5ff63fb915de034633d0dc29 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:15px; color:#fff; background:#1976d2; border-radius:8px; padding:3px 10px; border:2px solid #fff; font-weight:bold; box-shadow:0 2px 6px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e818.0\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_18f79038a93424d1983ddfb6d09c220e.setIcon(div_icon_290244ab5ff63fb915de034633d0dc29);
+            
+    
+            var marker_32fc770ed225d1cbf5c31693cdbf8b62 = L.marker(
+                [24.745489, 121.73974],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_4fa6b4008667095ce280058fc5e998fa = L.divIcon({
+  "html": "\n                    \u003cdiv style=\u0027display: flex; align-items: center; justify-content: center;\u0027\u003e\n                        \u003cdiv style=\u0027background:#1976d2; color:#fff; border-radius:50%; width:54px; height:54px; display:flex; align-items:center; justify-content:center; border:4px solid #fff; font-size:22px; font-weight:bold; box-shadow:0 2px 8px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e\n                            \u5c08\u4efb\n                        \u003c/div\u003e\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_be2f74cbfc04e4c42c43275d75115787 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_559e694edd703097146d6ab263af1bfe = $(`<div id="html_559e694edd703097146d6ab263af1bfe" style="width: 100.0%; height: 100.0%;">             <div style='width: 320px; font-family: Arial, sans-serif;'>                 <div style='background:#f5f5f5; padding:10px; border-radius:8px; margin-bottom:8px;'>                     <span style='font-size:18px; font-weight:bold; color:#d32f2f;'>2. 嵐峰路三段102巷5號2樓</span><br/>                     <span style='font-size:16px; font-weight:bold;'>售價：<span style='color:#1976d2'>680</span> 萬元</span><br/>                     <span style='font-size:15px;'>建坪：<b>35.725</b>　地坪：<b>8.898</b></span>                 </div>                 <table style='width:100%; font-size:13px; border-collapse:collapse;'>                     <tr><td style='font-weight:bold;'>單價</td><td>19.03 萬元</td></tr>                     <tr><td style='font-weight:bold;'>格局</td><td>2003/2/2</td></tr>                     <tr><td style='font-weight:bold;'>面寬/米</td><td></td></tr>                     <tr><td style='font-weight:bold;'>深度/米</td><td></td></tr>                     <tr><td style='font-weight:bold;'>現況</td><td>空屋</td></tr>                     <tr><td style='font-weight:bold;'>都市計畫</td><td>內</td></tr>                     <tr><td style='font-weight:bold;'>停駐路段</td><td></td></tr>                     <tr><td style='font-weight:bold;'>帶看方式</td><td>鑰匙</td></tr>                     <tr><td style='font-weight:bold;'>經紀人</td><td style='color:#1976d2; font-weight:bold;'>其衞組</td></tr>                 </table>             </div>             </div>`)[0];
+                popup_be2f74cbfc04e4c42c43275d75115787.setContent(html_559e694edd703097146d6ab263af1bfe);
+            
+        
+
+        marker_32fc770ed225d1cbf5c31693cdbf8b62.bindPopup(popup_be2f74cbfc04e4c42c43275d75115787)
+        ;
+
+        
+    
+    
+                marker_32fc770ed225d1cbf5c31693cdbf8b62.setIcon(div_icon_4fa6b4008667095ce280058fc5e998fa);
+            
+    
+            var marker_2d2ac649d4fd7f4beee03d46effbf901 = L.marker(
+                [24.744488999999998, 121.73974],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_9255b4f8e585dd4d1881fea66dd4b923 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:15px; color:#fff; background:#1976d2; border-radius:8px; padding:3px 10px; border:2px solid #fff; font-weight:bold; box-shadow:0 2px 6px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e680\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_2d2ac649d4fd7f4beee03d46effbf901.setIcon(div_icon_9255b4f8e585dd4d1881fea66dd4b923);
+            
+    
+            var marker_384e6c572ec71b378c65db10de8a1a84 = L.marker(
+                [24.781074, 121.771843],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_baecc0df3f87f217a29d6d42a69520e3 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\u0027display: flex; align-items: center; justify-content: center;\u0027\u003e\n                        \u003cdiv style=\u0027background:#1976d2; color:#fff; border-radius:50%; width:54px; height:54px; display:flex; align-items:center; justify-content:center; border:4px solid #fff; font-size:22px; font-weight:bold; box-shadow:0 2px 8px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e\n                            \u5c08\u4efb\n                        \u003c/div\u003e\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_16a14029fcbc03b62609c67881a44e7b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1a27360ba0b157764d1cdf86faad782f = $(`<div id="html_1a27360ba0b157764d1cdf86faad782f" style="width: 100.0%; height: 100.0%;">             <div style='width: 320px; font-family: Arial, sans-serif;'>                 <div style='background:#f5f5f5; padding:10px; border-radius:8px; margin-bottom:8px;'>                     <span style='font-size:18px; font-weight:bold; color:#d32f2f;'>3. 礁溪鄉武暖段85地號</span><br/>                     <span style='font-size:16px; font-weight:bold;'>售價：<span style='color:#1976d2'>2420</span> 萬元</span><br/>                     <span style='font-size:15px;'>建坪：<b></b>　地坪：<b>756.28</b></span>                 </div>                 <table style='width:100%; font-size:13px; border-collapse:collapse;'>                     <tr><td style='font-weight:bold;'>單價</td><td>3.2 萬元</td></tr>                     <tr><td style='font-weight:bold;'>格局</td><td></td></tr>                     <tr><td style='font-weight:bold;'>面寬/米</td><td>19.2</td></tr>                     <tr><td style='font-weight:bold;'>深度/米</td><td>124.4</td></tr>                     <tr><td style='font-weight:bold;'>現況</td><td>空地</td></tr>                     <tr><td style='font-weight:bold;'>都市計畫</td><td>外</td></tr>                     <tr><td style='font-weight:bold;'>停駐路段</td><td>路邊</td></tr>                     <tr><td style='font-weight:bold;'>帶看方式</td><td>直接</td></tr>                     <tr><td style='font-weight:bold;'>經紀人</td><td style='color:#1976d2; font-weight:bold;'>茗傑</td></tr>                 </table>             </div>             </div>`)[0];
+                popup_16a14029fcbc03b62609c67881a44e7b.setContent(html_1a27360ba0b157764d1cdf86faad782f);
+            
+        
+
+        marker_384e6c572ec71b378c65db10de8a1a84.bindPopup(popup_16a14029fcbc03b62609c67881a44e7b)
+        ;
+
+        
+    
+    
+                marker_384e6c572ec71b378c65db10de8a1a84.setIcon(div_icon_baecc0df3f87f217a29d6d42a69520e3);
+            
+    
+            var marker_f75a385953c2f19e31806991281e8f1c = L.marker(
+                [24.780074, 121.771843],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_3c341acabc64099d44fd6ddcaa9fb9a5 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:15px; color:#fff; background:#1976d2; border-radius:8px; padding:3px 10px; border:2px solid #fff; font-weight:bold; box-shadow:0 2px 6px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e2420\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_f75a385953c2f19e31806991281e8f1c.setIcon(div_icon_3c341acabc64099d44fd6ddcaa9fb9a5);
+            
+    
+            var marker_3f13e97d8dbaa4fbe5e3ba000d5ff78b = L.marker(
+                [24.802832, 121.771444],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_01af3a7179ae5d60f046c3072614db05 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\u0027display: flex; align-items: center; justify-content: center;\u0027\u003e\n                        \u003cdiv style=\u0027background:#d32f2f; color:#fff; border-radius:50%; width:54px; height:54px; display:flex; align-items:center; justify-content:center; border:4px solid #fff; font-size:22px; font-weight:bold; box-shadow:0 2px 8px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e\n                            \u4e00\u822c\n                        \u003c/div\u003e\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_4b0a446782dbbe2a681164f93ac5c58d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_f20f9961da96e006848f438c53fba811 = $(`<div id="html_f20f9961da96e006848f438c53fba811" style="width: 100.0%; height: 100.0%;">             <div style='width: 320px; font-family: Arial, sans-serif;'>                 <div style='background:#f5f5f5; padding:10px; border-radius:8px; margin-bottom:8px;'>                     <span style='font-size:18px; font-weight:bold; color:#d32f2f;'>4. 礁溪鄉瑪僯段385地號</span><br/>                     <span style='font-size:16px; font-weight:bold;'>售價：<span style='color:#1976d2'>3880</span> 萬元</span><br/>                     <span style='font-size:15px;'>建坪：<b></b>　地坪：<b>628.952</b></span>                 </div>                 <table style='width:100%; font-size:13px; border-collapse:collapse;'>                     <tr><td style='font-weight:bold;'>單價</td><td>6.17 萬元</td></tr>                     <tr><td style='font-weight:bold;'>格局</td><td></td></tr>                     <tr><td style='font-weight:bold;'>面寬/米</td><td>18.4</td></tr>                     <tr><td style='font-weight:bold;'>深度/米</td><td>115.3</td></tr>                     <tr><td style='font-weight:bold;'>現況</td><td>空屋</td></tr>                     <tr><td style='font-weight:bold;'>都市計畫</td><td>外</td></tr>                     <tr><td style='font-weight:bold;'>停駐路段</td><td></td></tr>                     <tr><td style='font-weight:bold;'>帶看方式</td><td>直接</td></tr>                     <tr><td style='font-weight:bold;'>經紀人</td><td style='color:#1976d2; font-weight:bold;'>其衞組</td></tr>                 </table>             </div>             </div>`)[0];
+                popup_4b0a446782dbbe2a681164f93ac5c58d.setContent(html_f20f9961da96e006848f438c53fba811);
+            
+        
+
+        marker_3f13e97d8dbaa4fbe5e3ba000d5ff78b.bindPopup(popup_4b0a446782dbbe2a681164f93ac5c58d)
+        ;
+
+        
+    
+    
+                marker_3f13e97d8dbaa4fbe5e3ba000d5ff78b.setIcon(div_icon_01af3a7179ae5d60f046c3072614db05);
+            
+    
+            var marker_66d8b207147e631ab44d7c3f2e320f72 = L.marker(
+                [24.801831999999997, 121.771444],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_c5f1ae05bd2674e0918e68ae4f893f9d = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:15px; color:#fff; background:#1976d2; border-radius:8px; padding:3px 10px; border:2px solid #fff; font-weight:bold; box-shadow:0 2px 6px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e3880\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_66d8b207147e631ab44d7c3f2e320f72.setIcon(div_icon_c5f1ae05bd2674e0918e68ae4f893f9d);
+            
+    
+            var marker_afb356e15e72c4c6f99eff48a8d539d0 = L.marker(
+                [24.825701, 121.787184],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_d8d9ac4cabb04bbb62c7cf3f3b285428 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\u0027display: flex; align-items: center; justify-content: center;\u0027\u003e\n                        \u003cdiv style=\u0027background:#d32f2f; color:#fff; border-radius:50%; width:54px; height:54px; display:flex; align-items:center; justify-content:center; border:4px solid #fff; font-size:22px; font-weight:bold; box-shadow:0 2px 8px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e\n                            \u4e00\u822c\n                        \u003c/div\u003e\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_a7b09f12a312b63ae2cb35a7a4954417 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7642f5abf05974d9e1ee664b226875bf = $(`<div id="html_7642f5abf05974d9e1ee664b226875bf" style="width: 100.0%; height: 100.0%;">             <div style='width: 320px; font-family: Arial, sans-serif;'>                 <div style='background:#f5f5f5; padding:10px; border-radius:8px; margin-bottom:8px;'>                     <span style='font-size:18px; font-weight:bold; color:#d32f2f;'>5. 礁溪鄉玉泉段390地號</span><br/>                     <span style='font-size:16px; font-weight:bold;'>售價：<span style='color:#1976d2'>1476</span> 萬元</span><br/>                     <span style='font-size:15px;'>建坪：<b></b>　地坪：<b>421.69</b></span>                 </div>                 <table style='width:100%; font-size:13px; border-collapse:collapse;'>                     <tr><td style='font-weight:bold;'>單價</td><td>3.5 萬元</td></tr>                     <tr><td style='font-weight:bold;'>格局</td><td></td></tr>                     <tr><td style='font-weight:bold;'>面寬/米</td><td>13</td></tr>                     <tr><td style='font-weight:bold;'>深度/米</td><td>98</td></tr>                     <tr><td style='font-weight:bold;'>現況</td><td>空地</td></tr>                     <tr><td style='font-weight:bold;'>都市計畫</td><td>外</td></tr>                     <tr><td style='font-weight:bold;'>停駐路段</td><td></td></tr>                     <tr><td style='font-weight:bold;'>帶看方式</td><td>直接</td></tr>                     <tr><td style='font-weight:bold;'>經紀人</td><td style='color:#1976d2; font-weight:bold;'>緁締/珍珍</td></tr>                 </table>             </div>             </div>`)[0];
+                popup_a7b09f12a312b63ae2cb35a7a4954417.setContent(html_7642f5abf05974d9e1ee664b226875bf);
+            
+        
+
+        marker_afb356e15e72c4c6f99eff48a8d539d0.bindPopup(popup_a7b09f12a312b63ae2cb35a7a4954417)
+        ;
+
+        
+    
+    
+                marker_afb356e15e72c4c6f99eff48a8d539d0.setIcon(div_icon_d8d9ac4cabb04bbb62c7cf3f3b285428);
+            
+    
+            var marker_11d553e932841320637f48569478b73e = L.marker(
+                [24.824700999999997, 121.787184],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_3dd2fca21d5dab74386b74072daddfee = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:15px; color:#fff; background:#1976d2; border-radius:8px; padding:3px 10px; border:2px solid #fff; font-weight:bold; box-shadow:0 2px 6px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e1476\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_11d553e932841320637f48569478b73e.setIcon(div_icon_3dd2fca21d5dab74386b74072daddfee);
+            
+    
+            var marker_9a5c72f393ff5371b131f2b0d8ecfecb = L.marker(
+                [24.695144, 121.830581],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_0452855d9ec1156a8106f3e3c644a611 = L.divIcon({
+  "html": "\n                    \u003cdiv style=\u0027display: flex; align-items: center; justify-content: center;\u0027\u003e\n                        \u003cdiv style=\u0027background:#1976d2; color:#fff; border-radius:50%; width:54px; height:54px; display:flex; align-items:center; justify-content:center; border:4px solid #fff; font-size:22px; font-weight:bold; box-shadow:0 2px 8px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e\n                            \u5c08\u4efb\n                        \u003c/div\u003e\n                    \u003c/div\u003e\n                ",
+  "className": "empty",
+});
+        
+    
+        var popup_634ddfb0d2256094cbeca0c60fa27802 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c984056ac10bc5b794bf9089254b17bb = $(`<div id="html_c984056ac10bc5b794bf9089254b17bb" style="width: 100.0%; height: 100.0%;">             <div style='width: 320px; font-family: Arial, sans-serif;'>                 <div style='background:#f5f5f5; padding:10px; border-radius:8px; margin-bottom:8px;'>                     <span style='font-size:18px; font-weight:bold; color:#d32f2f;'>6. 五結鄉大眾東路122號</span><br/>                     <span style='font-size:16px; font-weight:bold;'>售價：<span style='color:#1976d2'>488</span> 萬元</span><br/>                     <span style='font-size:15px;'>建坪：<b>36.79</b>　地坪：<b>38.23</b></span>                 </div>                 <table style='width:100%; font-size:13px; border-collapse:collapse;'>                     <tr><td style='font-weight:bold;'>單價</td><td>13.3 萬元</td></tr>                     <tr><td style='font-weight:bold;'>格局</td><td>彈格</td></tr>                     <tr><td style='font-weight:bold;'>面寬/米</td><td>4.62</td></tr>                     <tr><td style='font-weight:bold;'>深度/米</td><td>25.37</td></tr>                     <tr><td style='font-weight:bold;'>現況</td><td>空屋</td></tr>                     <tr><td style='font-weight:bold;'>都市計畫</td><td>外</td></tr>                     <tr><td style='font-weight:bold;'>停駐路段</td><td></td></tr>                     <tr><td style='font-weight:bold;'>帶看方式</td><td>直接</td></tr>                     <tr><td style='font-weight:bold;'>經紀人</td><td style='color:#1976d2; font-weight:bold;'>珍珍/緁締</td></tr>                 </table>             </div>             </div>`)[0];
+                popup_634ddfb0d2256094cbeca0c60fa27802.setContent(html_c984056ac10bc5b794bf9089254b17bb);
+            
+        
+
+        marker_9a5c72f393ff5371b131f2b0d8ecfecb.bindPopup(popup_634ddfb0d2256094cbeca0c60fa27802)
+        ;
+
+        
+    
+    
+                marker_9a5c72f393ff5371b131f2b0d8ecfecb.setIcon(div_icon_0452855d9ec1156a8106f3e3c644a611);
+            
+    
+            var marker_e9c1094c364eb71c1c583eaffada893a = L.marker(
+                [24.694143999999998, 121.830581],
+                {
+}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            var div_icon_18d049f5e56b85d51e5a2ebc1a05eb17 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:15px; color:#fff; background:#1976d2; border-radius:8px; padding:3px 10px; border:2px solid #fff; font-weight:bold; box-shadow:0 2px 6px #888; text-shadow: 1px 1px 2px #000;\u0027\u003e488\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_e9c1094c364eb71c1c583eaffada893a.setIcon(div_icon_18d049f5e56b85d51e5a2ebc1a05eb17);
+            
+    
+            var poly_line_de46c45982432addf75f7ff1af1a9c08 = L.polyline(
+                [[24.749461, 121.763649], [24.749461, 121.763649], [24.745489, 121.73974], [24.781074, 121.771843], [24.802832, 121.771444], [24.825701, 121.787184], [24.695144, 121.830581]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_a16d7408f921f2e496b66f001e062c36);
+        
+    
+            map_a16d7408f921f2e496b66f001e062c36.fitBounds(
+                [[24.749461, 121.763649], [24.749461, 121.763649], [24.745489, 121.73974], [24.781074, 121.771843], [24.802832, 121.771444], [24.825701, 121.787184], [24.695144, 121.830581]],
+                {}
+            );
+        
+</script>
+<button id="showTableBtn" style="position: fixed; bottom: 30px; right: 30px; z-index:9999; background: #1976d2; color: #fff; font-size: 20px; font-weight: bold; border-radius: 30px; padding: 16px 28px; box-shadow: 0 2px 8px #888; border: 2px solid #fff; cursor:pointer;">點我看表格</button>
+<div id="tableModal" style="display:none; position: fixed; bottom: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.45); z-index:10000; align-items: center; justify-content: center;">
+  <div style="background: #fff; border-radius: 16px; max-width: 98vw; max-height: 90vh; margin: 40px auto; overflow: auto; box-shadow: 0 2px 16px #888; padding: 18px 8px 8px 8px; position: relative;">
+    <button onclick="document.getElementById('tableModal').style.display='none'" style="position: absolute; top: 8px; right: 18px; font-size: 22px; background: none; border: none; color: #1976d2; font-weight: bold; cursor:pointer;">✕</button>
+    <h1 style="text-align: center; color: #1976d2; margin-top: 12px;">本次集看順序表格</h1>
+    <div style="overflow-x:auto;">
+    <table class="table-modal-table">
+    <thead>
+    <tr>
+    <th>順序</th><th>地址、地號</th><th>售價(萬元)</th><th>單價(萬元)</th><th>專任/一般</th><th>建坪</th><th>地坪</th><th>格局</th><th>面寬/米</th><th>深度/米</th><th>現況</th><th>都市計畫</th><th>停駐路段</th><th>帶看方式</th><th>經紀人</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><td>1</td><td>宜蘭市校舍二路33號</td><td>818.0</td><td>44</td><td>一般</td><td>18.26</td><td>5</td><td>彈格</td><td>5</td><td>7</td><td>空屋</td><td>內</td><td>黎明國小</td><td>直接</td><td>珍珍/緁締</td></tr>
+    <tr><td>2</td><td>嵐峰路三段102巷5號2樓</td><td>680</td><td>19.03</td><td>專任</td><td>35.7</td><td>8.898</td><td>######</td><td></td><td></td><td>空屋</td><td>內</td><td></td><td>鑰匙</td><td>其衛組</td></tr>
+    <tr><td>3</td><td>礁溪鄉武暖段85地號</td><td>2420</td><td>3.2</td><td>專任</td><td></td><td>756.3</td><td></td><td>19.2</td><td>124.4</td><td>空地</td><td>外</td><td>路邊</td><td>直接</td><td>茗傑</td></tr>
+    <tr><td>4</td><td>礁溪鄉瑪僯段385地號</td><td>3880</td><td>6.17</td><td>一般</td><td></td><td>628.952</td><td></td><td>18.4</td><td>115.3</td><td>空屋</td><td>外</td><td></td><td>直接</td><td>其衛組</td></tr>
+    <tr><td>5</td><td>礁溪鄉玉泉段390地號</td><td>1476</td><td>3.5</td><td>一般</td><td></td><td>421.7</td><td></td><td>13</td><td>98</td><td>空地</td><td>外</td><td></td><td>直接</td><td>緁締/珍珍</td></tr>
+    <tr><td>6</td><td>五結鄉大眾東路122號</td><td>488</td><td>13.3</td><td>專任</td><td>36.79</td><td>38.23</td><td>彈格</td><td>4.62</td><td>25.4</td><td>空屋</td><td>外</td><td></td><td>直接</td><td>珍珍/緁締</td></tr>
+    </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+<script>
+document.getElementById('showTableBtn').onclick = function() {
+  document.getElementById('tableModal').style.display = 'flex';
+};
+</script>
+<style>
+.table-modal-table {
+  border-collapse: collapse;
+  margin: 12px auto;
+  background: #fff;
+  box-shadow: 0 2px 8px #ccc;
+  width: 98%;
+  max-width: 900px;
+}
+.table-modal-table th, .table-modal-table td {
+  border: 2px solid #1976d2;
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 17px;
+}
+.table-modal-table th {
+  background: linear-gradient(90deg, #1565c0 0%, #1976d2 100%);
+  color: #fff;
+  font-size: 19px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.table-modal-table tr:nth-child(even) { background: #f0f6ff; }
+.table-modal-table tr:hover { background: #e3f2fd; }
+@media (max-width: 600px) {
+  .table-modal-table, .table-modal-table th, .table-modal-table td { font-size: 13px; }
+}
+</style>
+</html>
